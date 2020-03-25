@@ -7,11 +7,11 @@ app.get( '/', ( req, res ) => {
 
 const port = 5000
 app.listen( port, () => {
-    console.log(`server running on port ${port}`)
+    console.log(`server running on port ${process.env.PORT || port}`)
 
 })
 
-var wss = new WebSocketServer({port: 8080});
+var wss = new WebSocketServer({port: process.env.PORT || port});
 
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(data) {
